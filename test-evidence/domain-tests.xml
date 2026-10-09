@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="id.smartpantry.domain.DomainTest" tests="17" skipped="0" failures="0" errors="0" timestamp="2026-10-08T08:34:50" hostname="LENOVO" time="0.129">
+  <properties/>
+  <testcase name="belowThresholdRemoved" classname="id.smartpantry.domain.DomainTest" time="0.053"/>
+  <testcase name="emptyIngredientsReturnNoRecipes" classname="id.smartpantry.domain.DomainTest" time="0.028"/>
+  <testcase name="excludeRecipesWithoutOverlapOrSupportedIngredients" classname="id.smartpantry.domain.DomainTest" time="0.013"/>
+  <testcase name="classesKeepModelOrder" classname="id.smartpantry.domain.DomainTest" time="0.0"/>
+  <testcase name="landscapeLetterboxRestoresOriginal" classname="id.smartpantry.domain.DomainTest" time="0.004"/>
+  <testcase name="identicalBoxesHaveIouOne" classname="id.smartpantry.domain.DomainTest" time="0.0"/>
+  <testcase name="outputIsChannelMajorPixelCoordinates" classname="id.smartpantry.domain.DomainTest" time="0.002"/>
+  <testcase name="portraitLetterboxRestoresOriginal" classname="id.smartpantry.domain.DomainTest" time="0.0"/>
+  <testcase name="differentClassesAreNotSuppressed" classname="id.smartpantry.domain.DomainTest" time="0.004"/>
+  <testcase name="nonFiniteCoordinatesRemoved" classname="id.smartpantry.domain.DomainTest" time="0.001"/>
+  <testcase name="zeroAreaBoxIsSafe" classname="id.smartpantry.domain.DomainTest" time="0.0"/>
+  <testcase name="sameClassOverlapsAreSuppressed" classname="id.smartpantry.domain.DomainTest" time="0.0"/>
+  <testcase name="partialOverlapUsesUnion" classname="id.smartpantry.domain.DomainTest" time="0.0"/>
+  <testcase name="coverageIsRecipeIngredientsDenominator" classname="id.smartpantry.domain.DomainTest" time="0.009"/>
+  <testcase name="boxesAreClampedToImage" classname="id.smartpantry.domain.DomainTest" time="0.001"/>
+  <testcase name="disjointBoxesHaveIouZero" classname="id.smartpantry.domain.DomainTest" time="0.001"/>
+  <testcase name="rankByCoverageThenMatchesThenLoves" classname="id.smartpantry.domain.DomainTest" time="0.003"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

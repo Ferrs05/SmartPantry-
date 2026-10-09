@@ -1,0 +1,59 @@
+{
+  "source": "https://www.kaggle.com/datasets/canggih/indonesian-food-recipes",
+  "categories": {
+    "ayam": {
+      "raw": 1916,
+      "kept": 1898
+    },
+    "ikan": {
+      "raw": 1932,
+      "kept": 1931
+    },
+    "tahu": {
+      "raw": 1985,
+      "kept": 1901
+    },
+    "telur": {
+      "raw": 1974,
+      "kept": 1788
+    },
+    "tempe": {
+      "raw": 1986,
+      "kept": 1754
+    }
+  },
+  "skipped": {
+    "empty": 0,
+    "duplicate": 490,
+    "no_supported_ingredients": 31
+  },
+  "class_recipe_counts": {
+    "Ayam": 2419,
+    "Bawang Merah": 5901,
+    "Bawang Putih": 7692,
+    "Cabai": 5485,
+    "Tomat": 2168,
+    "Telur": 3335,
+    "Tahu": 2218,
+    "Tempe": 2049,
+    "Ikan": 1983,
+    "Jagung": 179,
+    "Wortel": 1013,
+    "Bayam": 48,
+    "Daun Bawang": 2163,
+    "Kacang Panjang": 228,
+    "Kangkung": 34,
+    "Kol": 323,
+    "Terong": 100,
+    "Kentang": 397
+  },
+  "mapping": "whole-word aliases from Ingredients only; no category/title inference",
+  "raw_sha256": {
+    "dataset-ayam.csv": "f48cc1d95142880dfc033a532d5bf1f391e49fa10b756674b341905b7936308b",
+    "dataset-ikan.csv": "053dc5c3bfb72a5f2990a38d65d702fa8d3555e7df0b310b29bd70ae7f0b70aa",
+    "dataset-tahu.csv": "c7c5cce662389690919d655ffc6879f338a5d318077d6ff6976dbb6e6c9eae14",
+    "dataset-telur.csv": "47e6407003ce90e2109b49241090778f44c305e2164e045bf22bdd753487cb63",
+    "dataset-tempe.csv": "9e59f461965310e416042c94f9ee347d6dcedaa1dfe573ff62588e81f468b270"
+  },
+  "recipe_count": 9272
+}
