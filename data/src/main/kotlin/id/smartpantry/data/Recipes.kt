@@ -31,7 +31,7 @@ data class RecipeWithIngredients(@Embedded val recipe: RecipeEntity,
 abstract class RecipeDatabase : RoomDatabase() {
     abstract fun dao(): RecipeDao
     companion object {
-        fun open(context: Context) = Room.databaseBuilder(context,RecipeDatabase::class.java,"resep.db")
+        fun open(context: Context) = Room.databaseBuilder(context,RecipeDatabase::class.java,"resep-scan18-v1.db")
             .createFromAsset("resep.db").build()
     }
 }

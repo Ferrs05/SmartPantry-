@@ -240,6 +240,7 @@ import kotlin.math.roundToInt
     LazyColumn(Modifier.fillMaxSize(),contentPadding=PaddingValues(20.dp),verticalArrangement=Arrangement.spacedBy(16.dp)) {
         item { Column(verticalArrangement=Arrangement.spacedBy(14.dp)) {
             Text("Temukan menu yang cocok",style=MaterialTheme.typography.titleLarge)
+            Text("Minimal 80% bahan resep yang terpetakan harus tersedia.",style=MaterialTheme.typography.bodySmall,color=MaterialTheme.colorScheme.onSurfaceVariant)
             OutlinedTextField(value=query,onValueChange={query=it},placeholder={Text("Cari resep")},singleLine=true,
                 leadingIcon={Icon(Icons.Default.Search,null)},trailingIcon={IconButton(onClick={showFilters=true},modifier=Modifier.testTag("recipeFilters")) { Icon(Icons.Default.Settings,contentDescription="Filter resep") }},
                 modifier=Modifier.fillMaxWidth(),shape=RoundedCornerShape(20.dp))
@@ -272,7 +273,7 @@ import kotlin.math.roundToInt
         Column(Modifier.padding(24.dp),verticalArrangement=Arrangement.spacedBy(18.dp)) {
             Text("Filter resep",style=MaterialTheme.typography.headlineMedium)
             Row(Modifier.fillMaxWidth(),verticalAlignment=Alignment.CenterVertically) {
-                Column(Modifier.weight(1f)) { Text("Semua bahan utama tersedia",style=MaterialTheme.typography.titleMedium);Text("Bumbu tetap perlu diperiksa.",style=MaterialTheme.typography.bodyMedium) }
+                Column(Modifier.weight(1f)) { Text("Semua bahan terpetakan tersedia",style=MaterialTheme.typography.titleMedium);Text("Seluruh 18 kelas bahan ikut dihitung.",style=MaterialTheme.typography.bodyMedium) }
                 Switch(checked=onlyComplete,onCheckedChange={onlyComplete=it},modifier=Modifier.testTag("completeFilter"))
             }
             Button(onClick={showFilters=false},modifier=Modifier.fillMaxWidth().heightIn(min=52.dp)) { Text("Tampilkan resep") }
@@ -291,7 +292,7 @@ import kotlin.math.roundToInt
         Column(Modifier.padding(14.dp),verticalArrangement=Arrangement.spacedBy(8.dp)) {
             Text(match.recipe.category.uppercase(),style=MaterialTheme.typography.labelSmall,color=MaterialTheme.colorScheme.secondary,letterSpacing=1.sp)
             Text(match.recipe.title,style=MaterialTheme.typography.titleMedium.copy(fontSize=14.sp,lineHeight=20.sp),minLines=3,maxLines=3,overflow=TextOverflow.Ellipsis)
-            Text("${match.matchedIds.size} dari ${match.recipe.ingredientIds.size} bahan utama",style=MaterialTheme.typography.labelMedium,color=MaterialTheme.colorScheme.primary)
+            Text("${match.matchedIds.size} dari ${match.recipe.ingredientIds.size} bahan terpetakan",style=MaterialTheme.typography.labelMedium,color=MaterialTheme.colorScheme.primary)
             LinearProgressIndicator(progress={match.coverage.toFloat()},color=Color(0xFFED653B),trackColor=MaterialTheme.colorScheme.primaryContainer,modifier=Modifier.fillMaxWidth().height(3.dp).clip(RoundedCornerShape(8.dp)))
         }
     }
@@ -313,7 +314,7 @@ import kotlin.math.roundToInt
                 Text(recipe.category.uppercase(),style=MaterialTheme.typography.labelMedium,color=MaterialTheme.colorScheme.secondary,letterSpacing=2.sp)
                 Text(recipe.title,style=MaterialTheme.typography.headlineMedium,modifier=Modifier.testTag("detailReady"))
             } }
-            item { Text("Bahan utama",style=MaterialTheme.typography.titleLarge)
+            item { Text("Bahan terpetakan",style=MaterialTheme.typography.titleLarge)
                 FlowRow(horizontalArrangement=Arrangement.spacedBy(8.dp)) { recipe.ingredientIds.sorted().forEach { id ->
                     Surface(shape=RoundedCornerShape(12.dp),color=MaterialTheme.colorScheme.primaryContainer) {
                         Row(Modifier.padding(horizontal=12.dp,vertical=10.dp),verticalAlignment=Alignment.CenterVertically,horizontalArrangement=Arrangement.spacedBy(8.dp)) {

@@ -15,8 +15,8 @@ class PhotoAssetsTest {
         val context=InstrumentationRegistry.getInstrumentation().targetContext
         val catalog=PhotoCatalog.get(context)
         assertTrue(catalog.all().size>=59)
-        assertEquals("ayam_mentega",catalog.recipe(1824)?.key)
-        assertEquals("tempe_orek",catalog.recipe(9000)?.key)
+        assertEquals("ayam_balado",catalog.recipe(272)?.key)
+        assertEquals("tempe_orek",catalog.recipe(8396)?.key)
         assertNull(catalog.recipe(1986)) // Chilli Tuna Puff must not receive a generic fish photograph.
         assertNull(catalog.recipe(Long.MAX_VALUE))
         PhotoMemory.clear()

@@ -38,8 +38,8 @@ Kamera bekerja per foto. Foto kamera berada di memori; aplikasi membaca foto gal
 | Input | RGB, letterbox 512 × 512, NCHW `[1,3,512,512]`, normalisasi `/255` |
 | Output | `[1,22,5376]`: kotak xywh dan skor 18 kelas |
 | Pascaproses | Confidence 0,25; NMS per kelas IoU 0,7; maksimal 300 deteksi |
-| Resep | 9.272 resep: ayam, ikan, tahu, telur, tempe |
-| Foto | 65 foto asli, dipetakan ke 2.477 resep; tersedia offline |
+| Resep | 713 resep: ayam, ikan, tahu, telur, tempe |
+| Foto | 65 foto asli, dipetakan ke 251 resep; tersedia offline |
 
 Kelas bahan: ayam, bawang merah, bawang putih, cabai, tomat, telur, tahu, tempe, ikan, jagung, wortel, bayam, daun bawang, kacang panjang, kangkung, kol, terong, dan kentang.
 
@@ -47,15 +47,15 @@ Model ada di `app/src/main/assets/best.tflite`; konfigurasi tensor dan kelas ada
 
 Kami mengambil resep dari [canggih / Indonesian Food Recipes](https://www.kaggle.com/datasets/canggih/indonesian-food-recipes). Lima kategori sumber memiliki 9.793 baris. Kami membuang 490 duplikat dan 31 resep tanpa bahan yang didukung. Teks bahan dan langkah asli tetap tersedia. `recipe_provenance.json` mencatat sumber, hitungan, dan hash CSV.
 
-Foto berasal dari Wikimedia Commons. Foto merupakan contoh hidangan yang sesuai, bukan foto asli masing-masing penulis resep. Beberapa variasi resep memakai foto hidangan yang sama. **6.795 resep masih tanpa foto, termasuk beberapa menu harian.** Pemetaan tidak memakai foto kategori sebagai pengganti. Sumber, fotografer, lisensi, dan perubahan ada di [PHOTO_SOURCES.md](PHOTO_SOURCES.md).
+Foto berasal dari Wikimedia Commons. Foto merupakan contoh hidangan yang sesuai, bukan foto asli masing-masing penulis resep. Beberapa variasi resep memakai foto hidangan yang sama. **462 resep hasil filter masih tanpa foto.** Pemetaan tidak memakai foto kategori sebagai pengganti. Sumber, fotografer, lisensi, dan perubahan ada di [PHOTO_SOURCES.md](PHOTO_SOURCES.md).
 
 Foto memakai WebP, ukuran maksimal 960 piksel, decoding di thread IO, dan cache bitmap 8 MB. Batas cache tersebut bukan batas seluruh RAM aplikasi.
 
 ## Rekomendasi resep
 
-Coverage menghitung jumlah jenis bahan tersedia dibagi jumlah jenis bahan yang didukung pada resep. Kandidat harus memiliki setidaknya satu bahan cocok. Pada tampilan, kami mengutamakan coverage, lalu ketersediaan foto; urutan berikutnya mengikuti ranking domain.
+Resep tampil jika minimal 80% jenis bahan resep yang terpetakan ke 18 kelas tersedia. Semua kelas ikut dihitung, termasuk bawang, cabai dan daun bawang. Tidak ada pembagian utama/sekunder. Denominator adalah jumlah jenis bahan terpetakan pada resep, bukan jumlah jenis bahan pada foto. Misalnya, 4/5 lolos dan 3/5 tidak lolos. Filter kelengkapan mensyaratkan 100% bahan terpetakan.
 
-Coverage 100% berarti bahan yang dikenali aplikasi tersedia. Pengguna tetap perlu memeriksa bumbu, bahan lain, dan takarannya pada detail resep.
+Penyaringan scan18 mempertahankan 713 dari 9.272 resep. Bumbu dasar seperti garam, minyak, air, santan, dan rempah diperbolehkan melalui daftar kata eksplisit di tools/filter_scan18_recipes.py. Istilah lain yang belum dikenali dikeluarkan untuk tinjauan; ini dapat membuang resep valid karena singkatan atau catatan masak. Audit tersedia di test-evidence/recipe-scan18-audit.csv. Perhitungan 80% tetap hanya memakai jenis bahan yang dipetakan ke 18 kelas. Database lokal memakai nama resep-scan18-v1.db agar instalasi lama membaca aset baru.
 
 ## Struktur
 

@@ -14,8 +14,8 @@ for p in photos.values():
     assert p['sourceUrl'].startswith('https://commons.wikimedia.org/wiki/File:')
     assert p['author'] and p['license']
 for key in index['recipes'].values(): assert key in photos
-assert index['recipes']['1824']=='ayam_mentega'
-assert index['recipes']['9000']=='tempe_orek'
+assert index['recipes']['272']=='ayam_balado'
+assert index['recipes']['8396']=='tempe_orek'
 assert '1986' not in index['recipes']
 assert not list((root/'app/src/main').rglob('food_atlas*'))
 assert sum(p['bytes'] for p in photos.values())<20_000_000

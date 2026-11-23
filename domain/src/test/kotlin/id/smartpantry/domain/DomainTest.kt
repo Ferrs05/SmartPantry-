@@ -48,11 +48,11 @@ class DomainTest {
     @Test fun nonFiniteCoordinatesRemoved() { val a=output(0);a[0]=Float.NaN;assertTrue(YoloDecoder().decode(a,1,Letterbox(512,512)).isEmpty()) }
     @Test fun outputIsChannelMajorPixelCoordinates() { val d=YoloDecoder().decode(output(17),1,Letterbox(512,512)).single(); assertEquals(17,d.classId);assertEquals(Box(206f,206f,306f,306f),d.box) }
     @Test fun emptyIngredientsReturnNoRecipes() { assertTrue(runImmediate { RecommendRecipes(repository(recipe(1,setOf(0))))(emptySet()) }.isEmpty()) }
-    @Test fun coverageIsRecipeIngredientsDenominator() { val match=runImmediate { RecommendRecipes(repository(recipe(1,setOf(0,1,2))))(setOf(0,1,9)) }.single();assertEquals(2f/3,match.coverage,.0001f);assertEquals(setOf(2),match.missingIds) }
+    @Test fun coverageIsRecipeIngredientsDenominator() { val match=runImmediate { RecommendRecipes(repository(recipe(1,setOf(0,1,2,3,4))))(setOf(0,1,2,3,9)) }.single();assertEquals(4f/5,match.coverage,.0001f);assertEquals(setOf(4),match.missingIds) }
     @Test fun rankByCoverageThenMatchesThenLoves() {
-        val values=runImmediate { RecommendRecipes(repository(recipe(1,setOf(0,1,2)),recipe(2,setOf(0)),
-            recipe(3,setOf(0,1),5),recipe(4,setOf(0,1),9)))(setOf(0,1)) }
-        assertEquals(listOf(4L,3L,2L,1L),values.map { it.recipe.id })
+        val values=runImmediate { RecommendRecipes(repository(recipe(1,setOf(0,5,6)),recipe(2,setOf(0)),
+            recipe(3,setOf(0,5),5),recipe(4,setOf(0,5),9)))(setOf(0,5)) }
+        assertEquals(listOf(4L,3L,2L),values.map { it.recipe.id })
     }
     @Test fun excludeRecipesWithoutOverlapOrSupportedIngredients() {
         assertTrue(runImmediate { RecommendRecipes(repository(recipe(1,emptySet()),recipe(2,setOf(3))))(setOf(0)) }.isEmpty())

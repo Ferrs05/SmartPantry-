@@ -31,14 +31,14 @@ interface RecipeRepository {
     suspend fun count(): Int
 }
 data class RecipeMatch(val recipe: Recipe, val matchedIds: Set<Int>, val missingIds: Set<Int>) {
-    val coverage: Float get() = matchedIds.size.toFloat() / recipe.ingredientIds.size
+    val coverage: Float get() = if(recipe.ingredientIds.isEmpty()) 0f else matchedIds.size.toFloat() / recipe.ingredientIds.size
 }
 class RecommendRecipes(private val repository: RecipeRepository) {
     suspend operator fun invoke(ingredients: Set<Int>): List<RecipeMatch> {
         if (ingredients.isEmpty()) return emptyList()
         return repository.findCandidates(ingredients).filter { it.ingredientIds.isNotEmpty() }
             .map { RecipeMatch(it, it.ingredientIds intersect ingredients, it.ingredientIds - ingredients) }
-            .filter { it.matchedIds.isNotEmpty() }
+            .filter { it.matchedIds.size * 5 >= it.recipe.ingredientIds.size * 4 }
             .sortedWith(compareByDescending<RecipeMatch> { it.coverage }
                 .thenByDescending { it.matchedIds.size }.thenByDescending { it.recipe.loves }
                 .thenBy { it.recipe.id })

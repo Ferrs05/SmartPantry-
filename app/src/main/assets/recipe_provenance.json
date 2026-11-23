@@ -55,5 +55,20 @@
     "dataset-telur.csv": "47e6407003ce90e2109b49241090778f44c305e2164e045bf22bdd753487cb63",
     "dataset-tempe.csv": "9e59f461965310e416042c94f9ee347d6dcedaa1dfe573ff62588e81f468b270"
   },
-  "recipe_count": 9272
+  "recipe_count": 713,
+  "scan18_filter": {
+    "original_count": 9272,
+    "retained": 713,
+    "removed": 8559,
+    "policy": "18 supported foods plus explicit basic-seasoning vocabulary; unknown terms excluded for review",
+    "category_counts": {
+      "ayam": 96,
+      "ikan": 167,
+      "tahu": 98,
+      "telur": 183,
+      "tempe": 169
+    },
+    "photo_recipes": 251,
+    "audit_file": "test-evidence/recipe-scan18-audit.csv"
+  }
 }

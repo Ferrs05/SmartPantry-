@@ -25,7 +25,7 @@ class PantryViewModel(private val detector: IngredientDetector, private val repo
     val featured=homeRecipes.asStateFlow()
     init {
         viewModelScope.launch {
-            try { homeRecipes.value=listOf(1824L,9000L).mapNotNull { repository.getRecipe(it) } }
+            try { homeRecipes.value=listOf(272L,8396L).mapNotNull { repository.getRecipe(it) } }
             catch(e: CancellationException) { throw e }
             catch(e: Exception) { mutable.update { it.copy(error="Resep belum bisa dibuka. Coba kembali ke beranda.") } }
         }

@@ -16,7 +16,7 @@ class RuntimeTest {
         val db=RecipeDatabase.open(context)
         try {
             val repo=LocalRecipeRepository(db.dao())
-            assertEquals(9272,repo.count())
+            assertEquals(713,repo.count())
             val matches=RecommendRecipes(repo)(setOf(0,1,2,3))
             assertTrue(matches.isNotEmpty())
             assertTrue(matches.first().coverage>0)

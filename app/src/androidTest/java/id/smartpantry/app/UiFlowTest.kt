@@ -30,7 +30,7 @@ class UiFlowTest {
         compose.onNodeWithText("Selesai").performClick()
         compose.onNodeWithTag("searchRecipes").assertIsEnabled().performClick()
         compose.waitUntil(30000) {
-            compose.onAllNodes(hasText("bahan utama",substring=true)).fetchSemanticsNodes().isNotEmpty()
+            compose.onAllNodes(hasText("bahan terpetakan",substring=true)).fetchSemanticsNodes().isNotEmpty()
         }
         compose.onNodeWithText("Pilihan resep").assertIsDisplayed()
         screenshot("real-photo-recipes")
@@ -43,7 +43,7 @@ class UiFlowTest {
         compose.onNodeWithText("Belum ada resep yang cocok. Coba ubah filter atau bahan pilihan.").performScrollTo().assertIsDisplayed()
         compose.onNodeWithTag("recipeFilters").performScrollTo().performClick()
         compose.onNodeWithText("Hapus filter").performClick()
-        compose.onAllNodes(hasText("bahan utama",substring=true)).onFirst().performClick()
+        compose.onAllNodes(hasText("bahan terpetakan",substring=true)).onFirst().performClick()
         compose.waitUntil(10000) { compose.onAllNodes(hasTestTag("detailReady")).fetchSemanticsNodes().isNotEmpty() }
         screenshot("real-photo-detail")
         compose.onNodeWithTag("detailList").performScrollToIndex(3)

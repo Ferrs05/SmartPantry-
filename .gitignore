@@ -41,3 +41,5 @@ test-evidence/*
 !test-evidence/domain-tests.xml
 !test-evidence/build-photo-final.log
 !test-evidence/instrumentation-photo-delivery.log
+
+!test-evidence/recipe-scan18-audit.csv

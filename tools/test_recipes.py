@@ -22,7 +22,7 @@ class RecipeTests(unittest.TestCase):
         with sqlite3.connect(ROOT/'app/src/main/assets/resep.db') as db:
             self.assertEqual('ok',db.execute('pragma integrity_check').fetchone()[0])
             self.assertEqual([],db.execute('pragma foreign_key_check').fetchall())
-            self.assertEqual(9272,db.execute('select count(*) from resep').fetchone()[0])
+            self.assertEqual(713,db.execute('select count(*) from resep').fetchone()[0])
             self.assertEqual(0,db.execute('select count(*) from resep where id not in (select resepId from resep_bahan)').fetchone()[0])
             for row in db.execute('select ingredientLines,steps from resep'):
                 self.assertTrue(json.loads(row[0]));self.assertTrue(json.loads(row[1]))
