@@ -1,6 +1,6 @@
 # SmartPantry
 
-SmartPantry adalah aplikasi Android untuk mengenali bahan masakan dari foto dan mencari resep dari bahan yang tersedia. Kami menggunakan model YOLO11n v2, database resep lokal, dan foto hidangan asli. Deteksi serta pencarian resep berjalan di perangkat tanpa internet.
+SmartPantry adalah aplikasi Android untuk mengenali bahan masakan dari foto dan mencari resep dari bahan yang tersedia. Model YOLO11n v2, database resep lokal, dan foto hidangan asli. Deteksi serta pencarian resep berjalan di perangkat tanpa internet.
 
 ![Beranda, daftar resep, dan detail](test-evidence/compact-preview.jpg)
 
